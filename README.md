@@ -1,2 +1,2 @@
 # recruit
-A wordprss theme
+Recruit is a fantastic WordPress theme with exclusive features.
