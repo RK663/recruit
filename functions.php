@@ -111,7 +111,7 @@ function recruit_scripts() {
 	// add custom fonts for our main stylesheet
 	wp_enqueue_style('recruit-fonts', recruit_web_fonts(), array(), null);
 
-	wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '3.3.2');
+	wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css', array(), '3.3.2');
 	wp_enqueue_style('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.3.0');
 	wp_enqueue_style('recruit-style-2', get_template_directory_uri() . '/assets/css/recruit-style.css', array(), '1.0');
 

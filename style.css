@@ -46,455 +46,22 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 1.0 Normalize
 --------------------------------------------------------------*/
-html {
-	font-family: sans-serif;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust:     100%;
-}
 
-body {
-	margin: 0;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-main,
-menu,
-nav,
-section,
-summary {
-	display: block;
-}
-
-audio,
-canvas,
-progress,
-video {
-	display: inline-block;
-	vertical-align: baseline;
-}
-
-audio:not([controls]) {
-	display: none;
-	height: 0;
-}
-
-[hidden],
-template {
-	display: none;
-}
-
-a {
-	background-color: transparent;
-}
-
-a:active,
-a:hover {
-	outline: 0;
-}
-
-abbr[title] {
-	border-bottom: 1px dotted;
-}
-
-b,
-strong {
-	font-weight: bold;
-}
-
-dfn {
-	font-style: italic;
-}
-
-h1 {
-	font-size: 2em;
-	margin: 0.67em 0;
-}
-
-mark {
-	background: #ff0;
-	color: #000;
-}
-
-small {
-	font-size: 80%;
-}
-
-sub,
-sup {
-	font-size: 75%;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
-}
-
-sup {
-	top: -0.5em;
-}
-
-sub {
-	bottom: -0.25em;
-}
-
-img {
-	border: 0;
-}
-
-svg:not(:root) {
-	overflow: hidden;
-}
-
-figure {
-	margin: 1em 40px;
-}
-
-hr {
-	box-sizing: content-box;
-	height: 0;
-}
-
-pre {
-	overflow: auto;
-}
-
-code,
-kbd,
-pre,
-samp {
-	font-family: monospace, monospace;
-	font-size: 1em;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-	color: inherit;
-	font: inherit;
-	margin: 0;
-}
-
-button {
-	overflow: visible;
-}
-
-button,
-select {
-	text-transform: none;
-}
-
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-	-webkit-appearance: button;
-	cursor: pointer;
-}
-
-button[disabled],
-html input[disabled] {
-	cursor: default;
-}
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-	border: 0;
-	padding: 0;
-}
-
-input {
-	line-height: normal;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-	box-sizing: border-box;
-	padding: 0;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-	height: auto;
-}
-
-input[type="search"] {
-	-webkit-appearance: textfield;
-	box-sizing: content-box;
-}
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-	-webkit-appearance: none;
-}
-
-fieldset {
-	border: 1px solid #c0c0c0;
-	margin: 0 2px;
-	padding: 0.35em 0.625em 0.75em;
-}
-
-legend {
-	border: 0;
-	padding: 0;
-}
-
-textarea {
-	overflow: auto;
-}
-
-optgroup {
-	font-weight: bold;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-td,
-th {
-	padding: 0;
-}
 
 /*--------------------------------------------------------------
 2.0 Typography
 --------------------------------------------------------------*/
-body,
-button,
-input,
-select,
-textarea {
-	color: #404040;
-	font-size: 16px;
-	font-size: 1rem;
-	line-height: 1.5;
-}
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	clear: both;
-}
-
-p {
-	margin-bottom: 1.5em;
-}
-
-b,
-strong {
-	font-weight: bold;
-}
-
-dfn,
-cite,
-em,
-i {
-	font-style: italic;
-}
-
-blockquote {
-	margin: 0 1.5em;
-}
-
-address {
-	margin: 0 0 1.5em;
-}
-
-pre {
-	background: #eee;
-	font-family: "Courier 10 Pitch", Courier, monospace;
-	font-size: 15px;
-	font-size: 0.9375rem;
-	line-height: 1.6;
-	margin-bottom: 1.6em;
-	max-width: 100%;
-	overflow: auto;
-	padding: 1.6em;
-}
-
-code,
-kbd,
-tt,
-var {
-	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-	font-size: 15px;
-	font-size: 0.9375rem;
-}
-
-abbr,
-acronym {
-	border-bottom: 1px dotted #666;
-	cursor: help;
-}
-
-mark,
-ins {
-	background: #fff9c0;
-	text-decoration: none;
-}
-
-small {
-	font-size: 75%;
-}
-
-big {
-	font-size: 125%;
-}
 
 /*--------------------------------------------------------------
 3.0 Elements
 --------------------------------------------------------------*/
-html {
-	box-sizing: border-box;
-}
 
-*,
-*:before,
-*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-	box-sizing: inherit;
-}
-
-body {
-	background: #fff; /* Fallback for when there is no custom background color defined. */
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-	content: "";
-}
-
-blockquote,
-q {
-	quotes: "" "";
-}
-
-hr {
-	background-color: #ccc;
-	border: 0;
-	height: 1px;
-	margin-bottom: 1.5em;
-}
-
-ul,
-ol {
-	margin: 0 0 1.5em 3em;
-}
-
-ul {
-	list-style: disc;
-}
-
-ol {
-	list-style: decimal;
-}
-
-li > ul,
-li > ol {
-	margin-bottom: 0;
-	margin-left: 1.5em;
-}
-
-dt {
-	font-weight: bold;
-}
-
-dd {
-	margin: 0 1.5em 1.5em;
-}
-
-img {
-	height: auto; /* Make sure images are scaled correctly. */
-	max-width: 100%; /* Adhere to container width. */
-}
-
-table {
-	margin: 0 0 1.5em;
-	width: 100%;
-}
 
 /*--------------------------------------------------------------
 4.0 Forms
 --------------------------------------------------------------*/
-/*button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-	border: 1px solid;
-	border-color: #ccc #ccc #bbb;
-	border-radius: 3px;
-	background: #e6e6e6;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
-	color: rgba(0, 0, 0, .8);
-	font-size: 12px;
-	font-size: 0.75rem;
-	line-height: 1;
-	padding: .6em 1em .4em;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-}*/
 
-/*button:hover,
-input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
-}
-
-button:focus,
-input[type="button"]:focus,
-input[type="reset"]:focus,
-input[type="submit"]:focus,
-button:active,
-input[type="button"]:active,
-input[type="reset"]:active,
-input[type="submit"]:active {
-	border-color: #aaa #bbb #bbb;
-	box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-textarea {
-	color: #666;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-textarea:focus {
-	color: #111;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"] {
-	padding: 3px;
-}
-
-textarea {
-	padding-left: 3px;
-	width: 100%;
-}*/
 
 /*--------------------------------------------------------------
 5.0 Navigation
@@ -645,7 +212,7 @@ div#breadcrumb{
 	padding-bottom: 25px;
 }
 .page-title{
-	font-size: 2.2em;
+	font-size: 1.6em;
 }
 ol.breadcrumb {
 	background-color: inherit;
@@ -671,8 +238,12 @@ ol.breadcrumb>li+li:before{
 .site-main .comment-navigation,
 .site-main .posts-navigation,
 .site-main .post-navigation {
+	border-color: #bab9b9;
+	border-style: solid;
+	border-width: 1px 0;
 	margin: 0 0 1.5em;
 	overflow: hidden;
+	padding: 7px 0;
 }
 
 .comment-navigation .nav-previous,
@@ -784,7 +355,8 @@ ol.breadcrumb>li+li:before{
 	margin: 0 0 2.5em;
 }
 .widget-title{
-	font-size: 1.5em;
+	font-size: 22px;
+	font-size: 2.2rem;
 	margin-top: 0;
 	text-transform: uppercase;
 }
@@ -841,8 +413,9 @@ ol.breadcrumb>li+li:before{
 #wp-calendar caption {
 	text-align: right;
 	color: #333;
-	font-size: 14px;
-	font-size: 1.4rem;
+	font-size: 16px;
+	font-size: 1.6em;
+	font-size: 1.6rem;
 	margin-top: 10px;
 	margin-bottom: 15px;
 	padding: 0;
@@ -913,17 +486,17 @@ aside.widget_archive > ul > li:before{
 }
 
 /*widget tag*/
-aside.widget_tag_cloud div.tagcloud a{
-	padding-left: 20px;
-	position: relative;
-	padding-right: 10px;
+aside.widget_tag_cloud div.tagcloud a {
+	color: #232a2b;
+	padding: 3px 5px;
+	display: inline-block;
+	border: 1px solid #bab9b9;
+	margin: 0 0 5px 0;
+	transition: all .25s ease-in 0s;
 }
-aside.widget_tag_cloud div.tagcloud a:before{
-	content: '\f02b';
-	font-family: 'Fontawesome';
-	font-size: 14px;
-	position: absolute;
-	left: 0;
+aside.widget_tag_cloud div.tagcloud a:hover{
+	border-color: #7b599b;
+	color: #7b599b;
 }
 
 /*widget recent posts*/
@@ -949,9 +522,21 @@ aside.widget_rss > ul > li{
 /*--------------------------------------------------------------
 10.0 Content
 --------------------------------------------------------------*/
+.content-area{
+	margin-top: 20px;
+}
+
 /*--------------------------------------------------------------
 10.1 Posts and pages
 --------------------------------------------------------------*/
+article.post{
+	/*background-color: #f9f9f9;*/
+	margin-bottom: 35px;
+	/*padding: 15px;*/
+	display: inline-block;
+	width: 100%;
+}
+
 .sticky {
 	display: block;
 }
@@ -974,6 +559,22 @@ aside.widget_rss > ul > li{
 .entry-content,
 .entry-summary {
 	margin: 1.5em 0 0;
+}
+
+.entry-title{
+	margin: 0 0 10px 0;
+}
+
+.entry-meta{
+	font-size: 14px;
+	font-size: 1.4rem;
+}
+
+.entry-footer {
+	border-color: #d1d1d1;
+	border-style: solid;
+	border-width: 1px 0;
+	margin-top: 15px;
 }
 
 .page-links {
@@ -999,6 +600,127 @@ aside.widget_rss > ul > li{
 .bypostauthor {
 	display: block;
 }
+
+.bypostauthor > .media.comment-body{
+	background-color: #e1e1e1;
+}
+
+.comments-area {margin: 60px 0 40px;}
+.comments-title {
+	font-size: 1.6em;
+	margin-bottom: 20px;
+}
+.comments-area > ol {
+	list-style-type: none;
+	margin-left: 0;
+	margin-bottom: 35px;
+	padding-left: 0;
+}
+
+.comment-metadata,
+.reply-link {
+	display: inline-block;
+	font-size: 1.4em;
+	font-size: 1.4rem;
+}
+
+.comments-area ul{
+	list-style-type: none;
+	padding-left: 45px;
+}
+
+.comments-area li{
+	margin: 0 0 25px;
+}
+
+.comments-area ul.children{
+	margin-top: 25px;
+}
+
+.media.comment-body{
+	background-color: #f7f7f7;
+	padding: 10px;
+}
+
+.comment-respond {margin-top: 60px;}
+.comment-reply-title {
+	font-size: 1.6em;
+	margin-bottom: 20px;	
+}
+
+
+#respond {} 
+#reply-title {} 
+#cancel-comment-reply-link {}
+#commentform {} 
+
+.comment-form #submit {
+	background-color: #f7f7f7;
+	border: 1px solid #d1d1d1;
+	margin: 15px 0 0;
+	padding: 7px 15px;
+	transition: border-color .25s ease-in-out 0s, background-color .25s ease-in-out 0s;
+}
+.comment-form #submit:hover,
+.comment-form #submit:focus,
+.comment-form #submit:active{
+	background-color: #7b599b;
+	border-color: #7b599b;
+	color: #fff;
+}
+.comment-notes {
+	display: none;
+} 
+.required {}
+
+.comment-form-author label,
+.comment-form-email label, 
+.comment-form-url label,
+.comment-form-comment label {
+	font-weight: normal;
+}
+
+#author,
+#email,
+#url,
+#comment {
+	background-color: #ffffff;
+	background-image: none;
+	border: 1px solid #cccccc;
+	border-radius: 0;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	color: #555555;
+	display: block;
+	font-size: 16px;
+	font-size: 1.6rem;
+	height: 34px;
+	line-height: 1.42857;
+	max-width: 350px;
+	padding: 6px 12px;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	width: 100%;
+}
+
+#comment {
+	height: inherit;
+	max-width: 500px;
+}
+
+#author:focus,
+#email:focus,
+#url:focus,
+#comment:focus {
+    border-color: #7b599b;
+    box-shadow: 0 1px 1px rgba(123, 89, 155, 0.075) inset, 0 0 8px rgba(123, 89, 155, 0.6);
+    outline: 0 none;
+}
+
+.form-allowed-tags {
+	display: none;
+}
+
+#cancel-comment-reply {}
+#cancel-comment-reply a {}
 
 /*--------------------------------------------------------------
 11.0 Infinite scroll

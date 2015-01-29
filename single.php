@@ -7,7 +7,14 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
+	<div id="recruit-header" class="col-sm-12">
+		<div id="breadcrumb">
+			<h1 class="page-title"><?php the_title(); ?></h1>
+			<?php recruit_breadcrumbs(); ?>			
+		</div>
+	</div>
+
+	<div id="primary" class="content-area col-sm-8">
 		<main id="main" class="site-main" role="main">
 
 		<?php while ( have_posts() ) : the_post(); ?>

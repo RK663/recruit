@@ -18,6 +18,15 @@ dt{
 	font-family: 'Titillium Web';
 }
 
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+table {
+	width: 100%;
+}
+
 .entry-content p,
 .entry-content li,
 .entry-content blockquote,
@@ -36,7 +45,6 @@ dt{
 .entry-content ul,
 .entry-content ol{
 	padding: 0 0 0 35px;
-	margin: 0;
 }
 
 /*--------------------------------------------------------------
@@ -70,6 +78,8 @@ a:active {
 	text-align: center;
 }
 .site-title{
+	font-size: 36px;
+	font-size: 3.6rem;
 	font-weight: 600;
 }
 .site-description{
