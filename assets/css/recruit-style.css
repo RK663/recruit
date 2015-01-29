@@ -1,0 +1,105 @@
+/*--------------------------------------------------------------
+1.0 Normalize
+--------------------------------------------------------------*/
+body{
+	font-family: 'Abel';
+	font-size: 1.6em;
+	font-size: 1.6rem;
+}
+h1, h2, h3, h4, h5, h6{
+	font-family: 'Titillium Web';
+}
+
+b,
+strong,
+th,
+optgroup,
+dt{
+	font-family: 'Titillium Web';
+}
+
+.entry-content p,
+.entry-content li,
+.entry-content blockquote,
+.entry-content dd,
+.entry-content th,
+.entry-content td{
+	font-size: 1.8em;
+	font-size: 1.8rem;
+}
+
+.entry-content dt{
+	font-size: 1.8em;
+	font-size: 1.8rem;
+}
+
+.entry-content ul,
+.entry-content ol{
+	padding: 0 0 0 35px;
+	margin: 0;
+}
+
+/*--------------------------------------------------------------
+2.0 Links
+--------------------------------------------------------------*/
+a{
+	color: #7b599b;
+}
+a:hover,
+a:focus,
+a:active {
+	color: purple;
+	text-decoration: none;
+}
+
+a:focus {
+	outline: thin dotted;
+}
+
+a:hover,
+a:active {
+	outline: 0;
+	text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+3.0 Header
+--------------------------------------------------------------*/
+.site-header{}
+.site-branding{
+	text-align: center;
+}
+.site-title{
+	font-weight: 600;
+}
+.site-description{
+	color: #26333a;
+}
+
+/*--------------------------------------------------------------
+4.0 Form
+--------------------------------------------------------------*/
+.form-control:focus {
+    border-color: #7B599B;
+    box-shadow: 0 1px 1px rgba(123, 89, 155, 0.075) inset, 0 0 8px rgba(123, 89, 155, 0.6);
+    outline: 0 none;
+}
+
+
+/*--------------------------------------------------------------
+4.0 Placeholder color
+--------------------------------------------------------------*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #999;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #999;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #999;
+}
