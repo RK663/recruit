@@ -611,7 +611,6 @@ body.blog article.post{
 }
 
 .page-content,
-.entry-content,
 .entry-summary {
 	margin: 1.5em 0 0.7em;
 }
@@ -628,6 +627,10 @@ body.blog article.post{
 	color: #626262;
 }
 
+.entry-content {
+	margin: 0 0 0.7em;
+}
+
 .entry-meta {
 	border-color: #d1d1d1;
 	border-style: solid;
@@ -641,19 +644,15 @@ body.single .entry-meta {
 	border: none;
 }
 
-.byline,
-.posted-on,
-.comments-link {
+.post .entry-meta > span {
 	margin-right: 5px;
 	text-transform: capitalize;
 	border-right: 1px solid #d1d1d1;
 	display: inline-block;
-	padding-right: 5px;
+	padding-right: 5px;	
 }
 
-.byline:before,
-.posted-on:before,
-.comments-link:before {
+.post .entry-meta > span:before {
 	font-family: 'Fontawesome';
 	margin: 0 5px 0 0;
 }
@@ -709,9 +708,14 @@ body.single .entry-meta {
 body.single .post-thumbnail {
 	margin-top: 10px;
 }
-.post-thumbnail{
+.post-thumbnail {
 	background-color: #f7f7f7;
+	margin-bottom: 1.5em;
 	text-align: center;
+}
+
+.post-thumbnail a {
+	display: block;
 }
 
 .author-info {
@@ -747,6 +751,29 @@ body.single .post-thumbnail {
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
 	display: none;
+}
+
+.format-aside .entry-format:before{
+	content: '\f15c';
+}
+
+.format-image .entry-format:before{
+	content: '\f03e';
+}
+
+.format-chat .entry-format:before{
+	content: '\f0e6';
+}
+
+.format-link .entry-format:before{
+	content: '\f0c1';
+}
+
+.format-link .entry-title > a:after {
+	content: '\f08e';
+	font-family: 'Fontawesome';
+	margin-left: 20px;
+	font-size: 22px;
 }
 
 /*--------------------------------------------------------------
