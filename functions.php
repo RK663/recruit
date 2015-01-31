@@ -53,9 +53,10 @@ function recruit_setup() {
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size(750, 9999, true);
-	add_image_size('recruit-medium', 450, 450, true);
-	add_image_size('recruit-large', 750, 9999, true);
+	set_post_thumbnail_size(750, 400, true);
+	add_image_size('recruit-thumbnail', 750, 400, true);
+	add_image_size('recruit-gallery-thumbnail', 450, 450, true);
+	add_image_size('recruit-large', 1024, 9999, true);
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -106,7 +107,7 @@ function recruit_widgets_init() {
 add_action( 'widgets_init', 'recruit_widgets_init' );
 
 function recruit_web_fonts() {
-	wp_register_style('recruit-web-fonts', 'http://fonts.googleapis.com/css?family=Abel|Titillium+Web:400,600,400italic|Lato:400italic');
+	wp_register_style('recruit-web-fonts', 'http://fonts.googleapis.com/css?family=Abel|Titillium+Web:400,600,400italic|Lato:400italic|Marck+Script');
 	wp_enqueue_style('recruit-web-fonts');
 }
 
@@ -218,15 +219,15 @@ function recruit_post_format_link() {
 	if (has_post_format('link')) {
 		$content = get_the_content();
 		$linktoend = stristr($content, 'http');
-		$afterlink = stristr($linktoend, '>');
+		$afterlink = stristr($linktoend, '"');
 
 		if (!strlen($afterlink) == 0) {
-			$linkurl = substr($linktoend, 0, -(strlen($afterlink) + 1));
+			$linkurl = substr($linktoend, 0, -(strlen($afterlink)));
 		} else {
 			$linkurl = $linktoend;
 		}
 
-		printf('<h1 class="entry-title"><a href="%1$s" rel="bookmark">%2$s</a></h1>',
+		printf('<h1 class="entry-title"><a href="%1$s" rel="bookmark" target="_blank">%2$s</a></h1><a href="%1$s" class="link" target="_blank">%1$s</a>',
 			$linkurl,
 			get_the_title()
 		);
@@ -247,7 +248,7 @@ function recruit_post_format_image() {
 
 	if (empty($img_url)) {
 		if (has_post_thumbnail()) {
-			$link_thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'recruit-large');
+			$link_thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'recruit-thumbnail');
 			$img_url = $link_thumbnail[0];
 		}
 	}
@@ -260,4 +261,27 @@ function recruit_post_format_image() {
 			get_the_title()
 		);
 	}
+}
+
+/**
+ * Post format quote
+ * @return string Return html content
+ */
+function recruit_post_format_quote() {
+	printf('<blockquote>%1$s<cite>%2$s</cite></blockquote>',
+		get_the_content(),
+		get_the_title()
+	);
+}
+
+/**
+ * Retrive post thumbnail link
+ * @return string Post thumbnail link
+ */
+function recruit_post_thumbnail_url() {
+	global $post;
+	$thumb = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'recruit-thumbnail');
+	$thumb_url = $thumb[0];
+
+	return $thumb_url;
 }
