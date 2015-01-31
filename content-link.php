@@ -10,19 +10,14 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+	<?php if (has_post_thumbnail()): ?>
+	<div class="entry-content bg link-with-bg" style="background-image: url('<?php echo recruit_post_thumbnail_url(); ?>');">
+		<?php recruit_post_format_link(); ?>
+	</div><!-- .entry-content -->
+	<?php else : ?>
 	<div class="entry-content">
 		<?php recruit_post_format_link(); ?>
 	</div><!-- .entry-content -->
+	<?php endif ?>
 
-	<?php if ('post' == get_post_type() && !is_single()) : ?>
-	<div class="entry-meta">
-		<?php recruit_posted_on(); ?>
-	</div><!-- .entry-meta -->
-	<?php endif; ?>
-
-	<?php if (is_single()) : ?>
-	<footer class="entry-footer">
-		<?php recruit_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-	<?php endif; ?>
 </article><!-- #post-## -->
