@@ -185,3 +185,52 @@ blockquote p:after {
 		text-align: left;
 	}
 }
+
+.format-quote blockquote {
+	font-family: "Marck Script";
+	font-size: 4rem;
+	line-height: 37px;
+	padding: 0 20px;
+	margin-bottom: 0;
+}
+
+.format-quote blockquote:before {
+	content: none;
+}
+
+.format-quote blockquote cite {
+	display: block;
+	font-size: 20px;
+	font-size: 2rem;
+}
+
+.format-quote blockquote cite:before {
+	content: '-';
+	margin-right: 5px;
+}
+
+.format-quote .blockquote-with-bg {
+	padding: 25px 20px;
+	color: #fff;
+}
+
+.format-status .status-with-bg {
+	color: #fff;
+	padding: 35px 40px;
+}
+
+.format-link .link-with-bg {
+	color: #fff;
+	padding: 35px 25px;
+	text-align: center;
+}
+
+.link-with-bg a {
+	color: #fff;
+	transition: all 0.2s ease-in-out 0s;
+}
+
+.post .bg {
+	background-position: center center;
+	background-size: cover;
+}
