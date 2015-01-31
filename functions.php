@@ -54,6 +54,8 @@ function recruit_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size(750, 9999, true);
+	add_image_size('recruit-medium', 450, 450, true);
+	add_image_size('recruit-large', 750, 9999, true);
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -193,12 +195,69 @@ function register_my_custom_button($buttons) {
 add_action('admin_head', 'register_recruit_buttons');
 
 
-add_filter( 'widget_tag_cloud_args', 'my_widget_tag_cloud_args' );
-function my_widget_tag_cloud_args( $args ) {
-	// Your extra arguments go here
+/**
+ * Modify the output of default wordpress tagcloud by giving each tag same size
+ * @param  object $args Same size in rem unit
+ * @return string       Same size in rem unit
+ */
+function recruit_widget_tag_cloud_args($args) {
 	$args['number'] = 20;
 	$args['largest'] = 1.6;
 	$args['smallest'] = 1.6;
 	$args['unit'] = 'rem';
 	return $args;
+}
+add_filter('widget_tag_cloud_args', 'recruit_widget_tag_cloud_args');
+
+
+/**
+ * Retrive link from post content
+ * @return string The first link
+ */
+function recruit_post_format_link() {
+	if (has_post_format('link')) {
+		$content = get_the_content();
+		$linktoend = stristr($content, 'http');
+		$afterlink = stristr($linktoend, '>');
+
+		if (!strlen($afterlink) == 0) {
+			$linkurl = substr($linktoend, 0, -(strlen($afterlink) + 1));
+		} else {
+			$linkurl = $linktoend;
+		}
+
+		printf('<h1 class="entry-title"><a href="%1$s" rel="bookmark">%2$s</a></h1>',
+			$linkurl,
+			get_the_title()
+		);
+	}
+}
+
+
+/**
+ * Retrive the url of image
+ * @return string Html content with img src
+ */
+function recruit_post_format_image() {
+	global $post;
+
+	if ($output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches)) {
+		$img_url = $matches[1][0];
+	}
+
+	if (empty($img_url)) {
+		if (has_post_thumbnail()) {
+			$link_thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'recruit-large');
+			$img_url = $link_thumbnail[0];
+		}
+	}
+
+	if (!empty($img_url)) {
+		printf('<div class="post-thumbnail"><a href="%1$s"><img src="%2$s" alt="%3$s" title="%4$s"></img></a></div>',
+			get_the_permalink(),
+			$img_url,
+			get_the_title(),
+			get_the_title()
+		);
+	}
 }
