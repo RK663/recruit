@@ -12,6 +12,12 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 640; /* pixels */
 }
 
+/**
+ * For easy translation purposes
+ * return string
+ */
+$GLOBALS['textdomain'] = 'recruit';
+
 if ( ! function_exists( 'recruit_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -46,7 +52,8 @@ function recruit_setup() {
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
-	//add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails' );
+	set_post_thumbnail_size(750, 9999, true);
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -66,7 +73,7 @@ function recruit_setup() {
 	 * See http://codex.wordpress.org/Post_Formats
 	 */
 	add_theme_support( 'post-formats', array(
-		'aside', 'image', 'video', 'quote', 'link',
+		'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat'
 	) );
 
 	// Set up the WordPress core custom background feature.
@@ -97,7 +104,7 @@ function recruit_widgets_init() {
 add_action( 'widgets_init', 'recruit_widgets_init' );
 
 function recruit_web_fonts() {
-	wp_register_style('recruit-web-fonts', 'http://fonts.googleapis.com/css?family=Abel|Lobster|Indie+Flower|Titillium+Web:400,600,400italic,300,300italic,700');
+	wp_register_style('recruit-web-fonts', 'http://fonts.googleapis.com/css?family=Abel|Titillium+Web:400,600,400italic|Lato:400italic');
 	wp_enqueue_style('recruit-web-fonts');
 }
 

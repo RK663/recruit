@@ -37,27 +37,27 @@ function the_posts_navigation() {
 }
 endif;
 
-if ( ! function_exists( 'the_post_navigation' ) ) :
+if ( ! function_exists( 'recruit_post_navigation' ) ) :
 /**
  * Display navigation to next/previous post when applicable.
  *
  * @todo Remove this function when WordPress 4.3 is released.
  */
-function the_post_navigation() {
+function recruit_post_navigation() {
 	// Don't print empty markup if there's nowhere to navigate.
-	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-	$next     = get_adjacent_post( false, '', false );
+	$previous = (is_attachment()) ? get_post( get_post()->post_parent) : get_adjacent_post(false, '', true);
+	$next     = get_adjacent_post(false, '', false);
 
-	if ( ! $next && ! $previous ) {
+	if (!$next && !$previous) {
 		return;
 	}
 	?>
 	<nav class="navigation post-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'recruit' ); ?></h2>
+		<h2 class="screen-reader-text"><?php _e('Post navigation', $GLOBALS['textdomain']); ?></h2>
 		<div class="nav-links">
 			<?php
-				previous_post_link( '<div class="nav-previous">%link</div>', '%title' );
-				next_post_link( '<div class="nav-next">%link</div>', '%title' );
+				previous_post_link('<div class="nav-previous"><div class="nav-indicator">' . _x('Previous Post', 'Previous post', $GLOBALS['textdomain']) . '</div><h3>%link</h3></div>', '%title');
+				next_post_link('<div class="nav-next"><div class="nav-indicator">' . _x('Next Post', 'Next post', $GLOBALS['textdomain']) . '</div><h3>%link</h3></div>', '%title');
 			?>
 		</div><!-- .nav-links -->
 	</nav><!-- .navigation -->
@@ -70,6 +70,16 @@ if ( ! function_exists( 'recruit_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function recruit_posted_on() {
+	$format = get_post_format();
+	if ( current_theme_supports( 'post-formats', $format ) ) {
+		printf( '<span class="entry-format">%1$s<a href="%2$s">%3$s</a></span>',
+			sprintf( '<span class="screen-reader-text">%s </span>', _x( 'Format', 'Used before post format.', 'recruit' ) ),
+			esc_url( get_post_format_link( $format ) ),
+			get_post_format_string( $format )
+		);
+	}
+
+
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -82,17 +92,25 @@ function recruit_posted_on() {
 		esc_html( get_the_modified_date() )
 	);
 
-	$posted_on = sprintf(
-		_x( 'Posted on %s', 'post date', 'recruit' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+	printf('<span class="byline"><span class="author vcard"><span class="screen-reader-text">%1$s</span><a class="url fn n" href="%2$s">%3$s</a></span></span>',
+		_x('Author', $GLOBALS['textdomain']),
+		esc_url(get_author_posts_url(get_the_author_meta('ID'))),
+		esc_html(get_the_author())
 	);
 
-	$byline = sprintf(
-		_x( 'by %s', 'post author', 'recruit' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+	printf('<span class="posted-on"><span class="screen-reader-text">%1$s</span><a href="%2$s" rel="bookmark">%3$s</a></span>',
+		_x('Posted on', $GLOBALS['textdomain']),
+		esc_url(get_permalink()),
+		$time_string
 	);
 
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>';
+	if (!post_password_required() && (comments_open() || get_comments_number())) {
+		echo '<span class="comments-link">';
+		comments_popup_link( __('Leave a comment', $GLOBALS['textdomain']), __('1 Comment', $GLOBALS['textdomain']), __('% Comments', $GLOBALS['textdomain']));
+		echo '</span>';
+	}
+
+	edit_post_link( __( 'Edit', 'recruit' ), '<span class="edit-link">', '</span>' );
 
 }
 endif;
@@ -104,26 +122,24 @@ if ( ! function_exists( 'recruit_entry_footer' ) ) :
 function recruit_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' == get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( __( ', ', 'recruit' ) );
-		if ( $categories_list && recruit_categorized_blog() ) {
-			printf( '<span class="cat-links">' . __( 'Posted in %1$s', 'recruit' ) . '</span>', $categories_list );
+
+		$categories_list = get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', $GLOBALS['textdomain']));
+		if ($categories_list && recruit_categorized_blog()) {
+			printf('<div class="cat-links"><span class="screen-reader-text">%1$s </span>%2$s</div>',
+				_x('Categories', 'Used before category names.', $GLOBALS['textdomain']),
+				$categories_list
+			);
 		}
 
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', __( ', ', 'recruit' ) );
-		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . __( 'Tagged %1$s', 'recruit' ) . '</span>', $tags_list );
+		$tags_list = get_the_tag_list('', _x(', ', 'Used between list items, there is a space after the comma.', $GLOBALS['textdomain']));
+		if ($tags_list) {
+			printf('<div class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</div>',
+				_x('Tags', 'Used before tag names.', $GLOBALS['textdomain']),
+				$tags_list
+			);
 		}
-	}
 
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
-		comments_popup_link( __( 'Leave a comment', 'recruit' ), __( '1 Comment', 'recruit' ), __( '% Comments', 'recruit' ) );
-		echo '</span>';
 	}
-
-	edit_post_link( __( 'Edit', 'recruit' ), '<span class="edit-link">', '</span>' );
 }
 endif;
 
@@ -408,3 +424,26 @@ function recruit_comment( $comment, $args, $depth ) {
     endswitch;
 }
 endif; // ends check for recruit_comment()
+
+
+function recruit_post_thumbnail() {
+	if (has_post_thumbnail()) {
+		echo '<div class="post-thumbnail">';
+		if (is_single()) {
+			the_post_thumbnail('post-thumbnail', array('alt' => get_the_title()));
+		} else {
+			echo '<a href="'. esc_url(get_permalink()) .'" class="thumbnail">';
+			the_post_thumbnail('post-thumbnail', array('alt' => get_the_title()));
+			echo '</a>';
+		}
+		echo '</div>';
+	}
+}
+
+function recruit_post_title() {
+	if (!is_single()) {
+		the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h1>');
+	} else {
+		the_title('<h1 class="entry-title">', '</h1>');
+	}
+}

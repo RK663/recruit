@@ -19,9 +19,15 @@ get_header(); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'content', 'single' ); ?>
+			<?php get_template_part( 'content', get_post_format() ); ?>
 
-			<?php the_post_navigation(); ?>
+			<?php recruit_post_navigation(); ?>
+
+			<?php
+			if (get_the_author_meta('description')) {
+				get_template_part('author-bio');
+			}
+			?>
 
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template
