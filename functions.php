@@ -285,3 +285,6 @@ function recruit_post_thumbnail_url() {
 
 	return $thumb_url;
 }
+
+// add meta-box
+require_once 'inc/meta-box.php';
